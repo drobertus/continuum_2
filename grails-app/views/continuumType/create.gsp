@@ -59,18 +59,6 @@
                        optionKey="id" optionValue="name" />
                 </div>
 
-                <div class='fieldcontain'>
-                  <label for='childTypes'>Child Continuum Types</label>
-                  <ul></ul>
-                    <g:link action="create" controller="continuumType" id="${continuumType.id}">Add Child Continuum Type</g:link>
-                </div>
-
-                <div class='fieldcontain'>
-                  <label for='phaseTypes'>Phase Types</label>
-                  <ul></ul>
-                   <g:link action="create" controller="phaseType" id="${continuumType.id}">Add PhaseType</g:link>
-
-                </div>
                     <!-- f:all bean="continuumType"/ -->
 
 

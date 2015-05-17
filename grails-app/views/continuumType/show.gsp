@@ -53,6 +53,17 @@
                         </span>
                     </li>
 
+                    <li class="fieldcontain">
+                        <span id="childTypes-label" class="property-label">Child Continuum Types</span>
+                        <span class="property-value" aria-labelledby="childTypes-label">
+                        <g:select name="childTypes" id="childTypes"
+                                multiple="true"
+                                from="${continuumType.childTypes}"
+                                value="${continuumType?.childTypes?.id}"
+                                optionKey="id" optionValue="name" />
+                        </span>
+                    </li>
+
             </ol>
             <!-- <f:display bean="continuumType" /> -->
            <!-- </ol> -->

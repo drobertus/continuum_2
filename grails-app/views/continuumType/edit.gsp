@@ -62,7 +62,13 @@
 
                 <div class='fieldcontain'>
                   <label for='childTypes'>Child Continuum Types</label>
-                  <ul></ul>
+
+                      <g:select name="childTypes" id="childTypes"
+                                              multiple="true"
+                                              from="${continuumType.childTypes}"
+                                              value="${continuumType?.childTypes?.id}"
+                                              optionKey="id" optionValue="name" />
+                      
                     <g:link action="create" controller="continuumType" params="[parentId: continuumType.id]">Add Child Continuum Type</g:link>
                 </div>
 
@@ -72,6 +78,7 @@
                    <g:link action="create" controller="phaseType" id="${continuumType.id}">Add PhaseType</g:link>
 
                 </div>
+
                     <!-- f:all bean="continuumType"/ -->
                 </fieldset>
                 <fieldset class="buttons">
