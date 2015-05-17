@@ -20,16 +20,19 @@ class ContinuumTypeController {
     def create() {
         println "create params = ${params}"
         def newCT = new ContinuumType(params)
-        newCT.parentId = params.parentId
-        println "newCT parentId=${newCT.parentId}"
+        println "newCT parentId (1) =${newCT.parentId}"
+        def parent = params.parentId
+        if (parent) {
+            newCT.parentId = Integer.parseInt(parent)
+        }
+        println "newCT parentId (2) =${newCT.parentId}"
         respond newCT
     }
 
     @Transactional
     def save(ContinuumType continuumType) {
 
-        println ("parentId = ${continuumType.parentId}")
-        
+        println ("parentId param = ${params.parentId}")
         if (continuumType == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -42,7 +45,18 @@ class ContinuumTypeController {
             return
         }
 
+
         continuumType.save flush:true
+        def parid = params.parentId
+        println("the parid type = ${parid?.getClass()?.name}")
+
+        if (parid){
+            Integer theId = Integer.parseInt(parid)
+            def parent = ContinuumType.get(theId)
+            println "child count for $parid = ${parent.childTypes.size()}"
+            parent.addToChildTypes(continuumType).save(flush: true)
+            println "new child count for $parid = ${parent.childTypes.size()}"
+        }
 
         request.withFormat {
             form multipartForm {
