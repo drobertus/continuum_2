@@ -7,6 +7,11 @@ class ContinuumType {
     BoundaryType entryBoundary
     BoundaryType exitBoundary
     Integer parentId
+   // Organization organization
+
+    boolean isTemplate
+
+
     static hasMany = [phaseTypes: PhaseType, childTypes: ContinuumType]
 
     static transients = ['parentId']

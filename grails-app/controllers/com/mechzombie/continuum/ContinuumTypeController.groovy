@@ -46,7 +46,7 @@ class ContinuumTypeController {
         }
 
 
-        continuumType.save flush:true
+        continuumType.save flush:true, failOnError: true
         def parid = params.parentId
        // println("the parid type = ${parid?.getClass()?.name}")
 

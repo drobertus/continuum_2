@@ -35,7 +35,7 @@ class ContinuumController {
             return
         }
 
-        continuum.save flush:true
+        continuum.save(flush:true, failOnError: true)
 
         request.withFormat {
             form multipartForm {

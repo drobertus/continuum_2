@@ -23,6 +23,8 @@ class BoundaryTypeController {
 
     @Transactional
     def save(BoundaryType boundaryType) {
+        println("")
+
         if (boundaryType == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -35,8 +37,10 @@ class BoundaryTypeController {
             return
         }
 
-        boundaryType.save flush:true
+        boundaryType.save(flush:true, failOnError: true)
 
+
+        println("boundaryType ${boundaryType}")
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'boundaryType.label', default: 'BoundaryType'), boundaryType.id])

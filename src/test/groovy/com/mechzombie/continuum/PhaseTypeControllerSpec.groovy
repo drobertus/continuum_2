@@ -4,13 +4,17 @@ import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(PhaseTypeController)
-@Mock(PhaseType)
+@Mock([PhaseType, ContinuumType, Organization])
 class PhaseTypeControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
         // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["name"] = 'pre-conference'
+        params["order"] = 2
+        params["organization"] = new Organization(name: "org1")
+        params["type"] = "mandatory"
+        params["continuumType"] = new ContinuumType(name: "meeting")
     }
 
     void "Test the index action returns the correct model"() {

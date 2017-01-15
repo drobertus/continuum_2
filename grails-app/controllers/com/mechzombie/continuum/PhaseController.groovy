@@ -35,7 +35,7 @@ class PhaseController {
             return
         }
 
-        phase.save flush:true
+        phase.save (flush:true, failOnError: true)
 
         request.withFormat {
             form multipartForm {

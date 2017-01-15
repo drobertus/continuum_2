@@ -68,7 +68,7 @@
                                               from="${continuumType.childTypes}"
                                               value="${continuumType?.childTypes?.id}"
                                               optionKey="id" optionValue="name" />
-                      
+
                     <g:link action="create" controller="continuumType" params="[parentId: continuumType.id]">Add Child Continuum Type</g:link>
                 </div>
 

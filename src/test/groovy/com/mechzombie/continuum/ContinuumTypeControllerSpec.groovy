@@ -4,13 +4,14 @@ import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(ContinuumTypeController)
-@Mock(ContinuumType)
+@Mock([ContinuumType, Organization])
 class ContinuumTypeControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
         // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["name"] = 'phone conference'
+        params["organization"] = new Organization(name: "test org")
     }
 
     void "Test the index action returns the correct model"() {
